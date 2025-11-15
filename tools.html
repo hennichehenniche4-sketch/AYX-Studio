@@ -1,1 +1,59 @@
-<html>...tools page code here...</html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AYX Studio — Tools</title>
+<style>
+  body{font-family:Arial; background:#f5f7fb; color:#0f172a; margin:0; padding:20px;}
+  header{display:flex; align-items:center; gap:12px;}
+  .logo{width:48px; height:48px; border-radius:10px; background:#6c5ce7; display:flex; align-items:center; justify-content:center; color:white; font-weight:700;}
+  .card{background:white; padding:14px; border-radius:10px; border:1px solid #eef2ff; margin-bottom:12px;}
+  pre{background:#0b1020; color:#e6eefc; padding:12px; border-radius:8px; overflow:auto;}
+  .btn{padding:8px 12px; border-radius:8px; border:0; background:#6c5ce7; color:white; cursor:pointer;}
+  .muted{color:#6b7280; font-size:13px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">AYX</div>
+  <div>
+    <h2 style="margin:0;">AYX Studio — Tools</h2>
+    <div class="muted">Demo tools for clients — IP check, Device info, Logger demo</div>
+  </div>
+</header>
+
+<div class="card">
+  <h3>IP Checker</h3>
+  <button class="btn" onclick="getIp()">Get my IP</button>
+  <span id="ip" style="margin-left:8px; font-weight:700;"></span>
+</div>
+
+<div class="card">
+  <h3>Device Info</h3>
+  <pre id="device"></pre>
+</div>
+
+<div class="card">
+  <h3>Demo Logger (ethical)</h3>
+  <p class="muted">Press button to simulate event. No passwords are collected.</p>
+  <button class="btn" onclick="logDemo()">Press Yes (Log demo)</button>
+  <div id="logMsg" style="display:none; margin-top:8px; color:green;">Event recorded (demo)</div>
+</div>
+
+<script>
+async function getIp(){
+  try{
+    const r = await fetch('https://api.ipify.org?format=json');
+    const j = await r.json();
+    document.getElementById('ip').textContent = j.ip;
+  } catch(e){ document.getElementById('ip').textContent='error'; }
+}
+document.getElementById('device').textContent = JSON.stringify({ua:navigator.userAgent, platform:navigator.platform}, null,2);
+function logDemo(){
+  document.getElementById('logMsg').style.display='block';
+  setTimeout(()=>{document.getElementById('logMsg').style.display='none'}, 2500);
+}
+</script>
+</body>
+</html>
