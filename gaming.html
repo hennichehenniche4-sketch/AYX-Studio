@@ -1,1 +1,52 @@
-<html>...gaming page code here...</html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AYX Studio — Gaming Server</title>
+<style>
+body{font-family:Arial; background:#0b1020; color:#e6eefc; margin:0; padding:20px;}
+.logo{display:inline-block; padding:10px 14px; border-radius:10px; background:#6c5ce7; font-weight:800;}
+.card{background:#071226; padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,.04); margin-bottom:12px;}
+.btn{padding:10px 12px; border-radius:8px; border:0; background:#6c5ce7; color:white; cursor:pointer;}
+.muted{color:#9aa3b2; font-size:13px;}
+</style>
+</head>
+<body>
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+  <div class="logo">AYX</div>
+  <div>
+    <h1 style="margin:0;">AYX Studio — Gaming Servers</h1>
+    <div class="muted">GTA / FiveM / Minecraft server pages</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Server Info</h3>
+  <p class="muted">IP, rules, admins, join buttons.</p>
+  <div><strong>Server IP:</strong> <span id="serverIp">play.example.com:7777</span></div>
+  <button class="btn" onclick="copyIp()">Copy IP</button>
+</div>
+
+<div class="card">
+  <h3>Rules</h3>
+  <ol class="muted">
+    <li>No cheating</li>
+    <li>Be respectful</li>
+    <li>Follow admin instructions</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>Admins</h3>
+  <ul>
+    <li>Younes — Owner</li>
+    <li>Ali — Admin</li>
+  </ul>
+</div>
+
+<script>
+function copyIp(){ navigator.clipboard.writeText(document.getElementById('serverIp').textContent).then(()=>alert('IP copied')) }
+</script>
+</body>
+</html>
